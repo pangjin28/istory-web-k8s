@@ -156,7 +156,7 @@ jobs:
           sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
           sudo chmod +x /usr/local/bin/yq
           yq --version
-          
+
       #image태그 변경
       - name: Update image in patch-deploy.yml (yq)
         run: |
@@ -169,5 +169,5 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -am "Update image tag to ${{ env.DOCKER_TAG }}"
+          git commit -am "Update image tag to ${{ github.sha }}"
           git push origin ${{ github.ref_name }}
